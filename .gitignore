@@ -1,0 +1,14 @@
+# Ignore VSCode settings and workspace files
+.vscode/
+
+# Ignore build directories and executables
+/build/
+/bin/
+/obj/
+/*.out
+/*.exe
+/*.app
+
+# Ignore temporary files
+*.log
+*.tmp
