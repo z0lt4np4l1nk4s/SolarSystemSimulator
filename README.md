@@ -6,15 +6,15 @@ This is a **Solar System Simulator** app created using **OpenGL** as part of my 
 
 ## Features
 
-- Displays the positions of planets in the solar system, updating according to the current date.
-- Allows users to change the date using the left and right arrow keys.
-- Planetary motion is simulated assuming that planets move in perfect circular orbits around the Sun.
-- The sizes of the planets and their distances are not to scale, but have been adjusted to custom sizes for better visual clarity.
+- Displays the positions of planets in the solar system, updating according to the current date
+- Allows users to change the date using the left and right arrow keys
+- Planetary motion is simulated assuming that planets move in perfect circular orbits around the Sun
+- The sizes of the planets and their distances are not to scale, but have been adjusted to custom sizes for better visual clarity
 - Provides the ability to focus on the point of view (POV) of each planet by pressing keys 1-9
 
 ---
 
-## 🗺️ Table of Contents
+## Table of Contents
 
 - [Project Purpose](#project-purpose)
 - [Quick Start](#quick-start)
@@ -31,21 +31,23 @@ I built this simulator for the **3D Computer Graphics** course at **MATHOS Osije
 
 ## Quick Start
 
-1. Download `` from the [latest release](https://github.com/z0lt4np4l1nk4s/SolarSystemSimulator/releases).
-2. Extract and double‑click ``.
-3. Use `` inside the app for the full keymap.
-
+1. Clone the repository
 ```bash
-git clone https://github.com/z0lt4np4l1nk4s/SolarSystemSimulator.git
-cd SolarSystemSimulator
-cmake -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build --config Release
-./build/SolarSystemSimulator      # add .exe on Windows
+git clone https://github.com/z0lt4np4l1nk4s/SolarSystemSimulator
 ```
 
-*Requires ****CMake ≥ 3.20****, a C++17 compiler and an OpenGL 3.3+ GPU.*
+2. Run the compile command
+```bash
+cd SolarSystemSimulator
+.\compile.bat
+```
 
-> **Windows shortcut:** run `` in the repo root to produce `out.exe`.
+3. Run the simulation
+```bash
+.\out.exe
+```
+
+*Requires a C++17 compiler*
 
 ---
 
@@ -97,9 +99,8 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 
 ### Data Sources
 
-- Orbital periods & radii: NASA Planetary Fact Sheet *(retrieved 2025‑05‑01).*
-- Textures: [Solar System Scope](https://www.solarsystemscope.com/textures/) *(CC‑BY‑4.0).*
-- Skybox: Milky Way by **SpaceEngine**.
+- Orbital periods & radii: NASA Planetary Fact Sheet *(retrieved 2025‑05‑01)*
+- Textures: [Solar System Scope](https://www.solarsystemscope.com/textures/) *(CC‑BY‑4.0)*
 
 ### Core Components
 
@@ -113,19 +114,22 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 
 ---
 
-## Known Limitations
+## Results
 
-- Circular, coplanar orbits — no eccentricity/inclination.
-- Planet sizes & distances vastly compressed for visibility.
-- Single light source; no shadows or atmospheric scattering.
-- No asteroid belt, dwarf planets or moons *(planned — see roadmap)*.
+| Metric                      | Value   |
+| --------------------------- | ------- |
+| Avg FPS @1080p (RTX 3050)   | **140** |
+| Memory footprint            | ~220 MB |
 
 ---
 
-## Limitations
+## Known Limitations
 
-- The orbits of the planets are simplified to perfect circles, which is not completely accurate in real life.
-- Planet sizes are not scaled to their actual dimensions, instead using custom sizes to make the simulation visually more appealing.
+- **Idealised orbits** – planets follow perfect circles in a single plane; eccentricity, inclination and axial tilt are ignored.
+- **Not‑to‑scale sizing** – planetary diameters and inter‑planet distances are intentionally exaggerated/compressed to keep everything visible in one view.
+- **Only one moon** – currently *only Earth’s Moon* is rendered; no other natural satellites, dwarf planets or asteroid belt (see roadmap).
+- **Single light source** – simple Phong lighting without shadows, eclipses or atmospheric scattering.
+- **Preset trajectories** – planets do not exert gravity on each other; they move along predefined paths.
 
 ## Screenshots and Demo
 

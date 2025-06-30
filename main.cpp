@@ -16,6 +16,12 @@
 #include "models/moon.h"
 #include "models/light.h"
 #include "util/string_util.h"
+#include <chrono>
+using Clock = std::chrono::high_resolution_clock;
+
+auto lastClockTime = Clock::now();
+int frameCount = 0;
+float fps = 0.0f;
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -92,7 +98,6 @@ int main()
         time = glfwGetTime();
         elapsedTime = activeDate.yearsSince(referenceDate);
 
-        // std::cout << "Time: " << time << std::endl;
         background.render();
         for (int i = 0; i < planetCount; ++i)
         {
@@ -152,8 +157,22 @@ int main()
 
         textRenderer.renderText(camera, activeDate.toString(), camera.getWidth() - 175.0f, 20.0f, 48.0f, fontColor, true);
 
+        char fpsText[32];
+        snprintf(fpsText, sizeof(fpsText), "FPS: %.1f", fps);
+        textRenderer.renderText(camera, fpsText, camera.getWidth() - 175.0f, 60.0f, 48.0f, fontColor, true);
+
         glfwSwapBuffers(window);
         glfwPollEvents();
+
+        frameCount++;
+        auto currentTime = Clock::now();
+        float elapsed = std::chrono::duration<float>(currentTime - lastClockTime).count();
+        if (elapsed >= 1.0f)
+        {
+            fps = frameCount / elapsed;
+            frameCount = 0;
+            lastClockTime = currentTime;
+        }
 
         GLenum err = glGetError();
         if (err != GL_NO_ERROR)
