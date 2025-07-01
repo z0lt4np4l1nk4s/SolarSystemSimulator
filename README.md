@@ -77,18 +77,18 @@ cd SolarSystemSimulator
 
 ```
 .
-├─ include/           # Public headers (GLAD, GLFW, GLM, stb_image, engine headers)
-├─ src/               # Application source (.cpp)
-│  ├─ models/         # Planet, moon, light & sphere primitives
-│  └─ …
-├─ resources/
-│  ├─ shaders/        # GLSL sources (background, planet, text)
-│  ├─ textures/       # 2K JPEG planet textures + skybox
-│  └─ fonts/          # BigShouldersInline‑*.ttf (OFL‑1.1)
-├─ screenshots/       # GIFs & PNGs used in this README
-├─ compile.bat        # One‑click Windows build helper
-├─ CMakeLists.txt     # Cross‑platform build script
-└─ LICENSE            # MIT Licence
+├─ include/           # Public C++ headers for external and internal components (GLFW, GLAD, GLM, stb_image)
+├─ lib/               # Precompiled third-party libraries and static dependencies
+├─ resources/         # Non-code assets used at runtime
+│  ├─ shaders/        # GLSL shader programs (planet rendering, text overlay, skybox)
+│  ├─ textures/       # High-resolution JPEG planet textures and starfield skybox
+│  └─ fonts/          # TrueType fonts for HUD (e.g. BigShouldersInline‑*.ttf)
+├─ screenshots/       # Visual assets (GIFs, PNGs) used in README or presentation
+├─ src/               # Application source files (main logic, rendering, input, simulation)
+│  ├─ models/         # Scene primitives: planets, moons, lighting, mesh generators
+│  └─ …               # Other modules like renderer, input manager, orbit simulation
+├─ compile.bat        # One‑click build script for Windows users (calls CMake + MSVC)
+├─ main.cpp           # Entry point of the application (initialises window, engine, loop)
 ```
 
 Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all bundled under permissive licenses so the project builds out‑of‑the‑box without system‑wide installs.
@@ -99,7 +99,7 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 
 ### Data Sources
 
-- Orbital periods & radii: NASA Planetary Fact Sheet *(retrieved 2025‑05‑01)*
+- Orbital periods & radii: NASA Planetary Fact Sheet
 - Textures: [Solar System Scope](https://www.solarsystemscope.com/textures/) *(CC‑BY‑4.0)*
 
 ### Core Components
@@ -111,15 +111,6 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 | `Input`        | GLFW callbacks → app commands            | GLFW                         |
 | `TextRenderer` | Bitmap‑font rendering (HUD & help)       | FreeType (via stb\_truetype) |
 | `Assets`       | Texture & shader loading                 | stb\_image, `<filesystem>`   |
-
----
-
-## Results
-
-| Metric                      | Value   |
-| --------------------------- | ------- |
-| Avg FPS @1080p (RTX 3050)   | **140** |
-| Memory footprint            | ~220 MB |
 
 ---
 
