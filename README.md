@@ -120,11 +120,11 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 
 ## 7. Known Limitations
 
-- **Idealised orbits** – planets follow perfect circles in a single plane; eccentricity, inclination and axial tilt are ignored.
-- **Not‑to‑scale sizing** – planetary diameters and inter‑planet distances are intentionally exaggerated/compressed to keep everything visible in one view.
-- **Only one moon** – currently *only Earth’s Moon* is rendered; no other natural satellites, dwarf planets or asteroid belt (see roadmap).
-- **Single light source** – simple Phong lighting without shadows, eclipses or atmospheric scattering.
-- **Preset trajectories** – planets do not exert gravity on each other; they move along predefined paths.
+- **Idealised orbits** – planets follow perfect circles in a single plane; eccentricity, inclination and axial tilt are ignored
+- **Not‑to‑scale sizing** – planetary diameters and inter‑planet distances are intentionally exaggerated/compressed to keep everything visible in one view
+- **Only one moon** – currently *only Earth’s Moon* is rendered; no other natural satellites, dwarf planets or asteroid belt
+- **Single light source** – simple Phong lighting without shadows, eclipses or atmospheric scattering
+- **Preset trajectories** – planets do not exert gravity on each other; they move along predefined paths
 
 ## 8. Screenshots and Demo
 
