@@ -4,29 +4,24 @@ This is a **Solar System Simulator** app created using **OpenGL** as part of my 
 
 ---
 
-## Features
-
-- Displays the positions of planets in the solar system, updating according to the current date
-- Allows users to change the date using the left and right arrow keys
-- Planetary motion is simulated assuming that planets move in perfect circular orbits around the Sun
-- The sizes of the planets and their distances are not to scale, but have been adjusted to custom sizes for better visual clarity
-- Provides the ability to focus on the point of view (POV) of each planet by pressing keys 1-9
-
----
-
 ## Table of Contents
 
 1. [Project Purpose](#project-purpose)
 2. [Quick Start](#quick-start)
-3. [Controls](#controls)
-4. [Directory Layout](#directory-layout)
-5. [Architecture & Methodology](#architecture--methodology)
-6. [Known Limitations](#known-limitations)
-7. [Screenshots and Demo](#screenshots-and-demo)
+3. [Features](#features)
+4. [Controls](#controls)
+5. [Directory Layout](#directory-layout)
+6. [Architecture & Methodology](#architecture--methodology)
+7. [Known Limitations](#known-limitations)
+8. [Screenshots and Demo](#screenshots-and-demo)
+
+---
 
 ## 1. Project Purpose
 
-I built this simulator for the **3D Computer Graphics** course to demonstrate how a small, well‑structured OpenGL project can visualise complex motion while staying performant on entry‑level hardware.
+This project was created to demonstrate how a structured OpenGL application can visualize complex 3D motion while remaining performant on modest hardware. The focus was on readability, modularity, and blending mathematical simulation with visual clarity.
+
+---
 
 ## 2. Quick Start
 
@@ -50,7 +45,17 @@ cd SolarSystemSimulator
 
 ---
 
-## 3. Controls
+## 3. Features
+
+- Displays the positions of planets in the solar system, updating according to the current date
+- Allows users to change the date using the left and right arrow keys
+- Planetary motion is simulated assuming that planets move in perfect circular orbits around the Sun
+- The sizes of the planets and their distances are not to scale, but have been adjusted to custom sizes for better visual clarity
+- Provides the ability to focus on the point of view (POV) of each planet by pressing keys 1-9
+
+---
+
+## 4. Controls
 
 - **Left Arrow Key**: Decrease the current date and move backward in time.
 - **Right Arrow Key**: Increase the current date and move forward in time.
@@ -72,7 +77,7 @@ cd SolarSystemSimulator
 
 ---
 
-## 4. Directory Layout
+## 5. Directory Layout
 
 ```
 .
@@ -94,14 +99,14 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 
 ---
 
-## 5. Architecture & Methodology
+## 6. Architecture & Methodology
 
-### 5.1 Data Sources
+### 6.1 Data Sources
 
 - Orbital periods & radii: NASA Planetary Fact Sheet
 - Textures: [Solar System Scope](https://www.solarsystemscope.com/textures/) *(CC‑BY‑4.0)*
 
-### 5.2 Core Components
+### 6.2 Core Components
 
 | Module         | Responsibility                           | Key APIs                     |
 | -------------- | ---------------------------------------- | ---------------------------- |
@@ -113,7 +118,7 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 
 ---
 
-## 6. Known Limitations
+## 7. Known Limitations
 
 - **Idealised orbits** – planets follow perfect circles in a single plane; eccentricity, inclination and axial tilt are ignored.
 - **Not‑to‑scale sizing** – planetary diameters and inter‑planet distances are intentionally exaggerated/compressed to keep everything visible in one view.
@@ -121,7 +126,7 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 - **Single light source** – simple Phong lighting without shadows, eclipses or atmospheric scattering.
 - **Preset trajectories** – planets do not exert gravity on each other; they move along predefined paths.
 
-## 7. Screenshots and Demo
+## 8. Screenshots and Demo
 
 ### App Screenshot
 Here’s a screenshot of the app:
