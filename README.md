@@ -16,20 +16,19 @@ This is a **Solar System Simulator** app created using **OpenGL** as part of my 
 
 ## Table of Contents
 
-- [Project Purpose](#project-purpose)
-- [Quick Start](#quick-start)
-- [Controls](#controls)
-- [Directory Layout](#directory-layout)
-- [Architecture & Methodology](#architecture--methodology)
-- [Results](#results)
-- [Known Limitations](#known-limitations)
-- [Screenshots and Demo](#screenshots-and-demo)
+1. [Project Purpose](#project-purpose)
+2. [Quick Start](#quick-start)
+3. [Controls](#controls)
+4. [Directory Layout](#directory-layout)
+5. [Architecture & Methodology](#architecture--methodology)
+6. [Known Limitations](#known-limitations)
+7. [Screenshots and Demo](#screenshots-and-demo)
 
-## Project Purpose
+## 1. Project Purpose
 
-I built this simulator for the **3D Computer Graphics** course at **MATHOS Osijek** to demonstrate how a small, well‑structured OpenGL project can visualise complex motion while staying performant on entry‑level hardware.
+I built this simulator for the **3D Computer Graphics** course to demonstrate how a small, well‑structured OpenGL project can visualise complex motion while staying performant on entry‑level hardware.
 
-## Quick Start
+## 2. Quick Start
 
 1. Clone the repository
 ```bash
@@ -51,7 +50,7 @@ cd SolarSystemSimulator
 
 ---
 
-## Controls
+## 3. Controls
 
 - **Left Arrow Key**: Decrease the current date and move backward in time.
 - **Right Arrow Key**: Increase the current date and move forward in time.
@@ -73,7 +72,7 @@ cd SolarSystemSimulator
 
 ---
 
-## Directory Layout
+## 4. Directory Layout
 
 ```
 .
@@ -95,14 +94,14 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 
 ---
 
-## Architecture & Methodology
+## 5. Architecture & Methodology
 
-### Data Sources
+### 5.1 Data Sources
 
 - Orbital periods & radii: NASA Planetary Fact Sheet
 - Textures: [Solar System Scope](https://www.solarsystemscope.com/textures/) *(CC‑BY‑4.0)*
 
-### Core Components
+### 5.2 Core Components
 
 | Module         | Responsibility                           | Key APIs                     |
 | -------------- | ---------------------------------------- | ---------------------------- |
@@ -114,7 +113,7 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 
 ---
 
-## Known Limitations
+## 6. Known Limitations
 
 - **Idealised orbits** – planets follow perfect circles in a single plane; eccentricity, inclination and axial tilt are ignored.
 - **Not‑to‑scale sizing** – planetary diameters and inter‑planet distances are intentionally exaggerated/compressed to keep everything visible in one view.
@@ -122,7 +121,7 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 - **Single light source** – simple Phong lighting without shadows, eclipses or atmospheric scattering.
 - **Preset trajectories** – planets do not exert gravity on each other; they move along predefined paths.
 
-## Screenshots and Demo
+## 7. Screenshots and Demo
 
 ### App Screenshot
 Here’s a screenshot of the app:
