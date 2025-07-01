@@ -17,13 +17,13 @@ This is a **Solar System Simulator** app created using **OpenGL** as part of my 
 
 ---
 
-## 1. Project Purpose
+## Project Purpose
 
 This project was created to demonstrate how a structured OpenGL application can visualize complex 3D motion while remaining performant on modest hardware. The focus was on readability, modularity, and blending mathematical simulation with visual clarity.
 
 ---
 
-## 2. Quick Start
+## Quick Start
 
 1. Clone the repository
 ```bash
@@ -45,7 +45,7 @@ cd SolarSystemSimulator
 
 ---
 
-## 3. Features
+## Features
 
 - Displays the positions of planets in the solar system, updating according to the current date
 - Allows users to change the date using the left and right arrow keys
@@ -55,7 +55,7 @@ cd SolarSystemSimulator
 
 ---
 
-## 4. Controls
+## Controls
 
 - **Left Arrow Key**: Decrease the current date and move backward in time.
 - **Right Arrow Key**: Increase the current date and move forward in time.
@@ -77,7 +77,7 @@ cd SolarSystemSimulator
 
 ---
 
-## 5. Directory Layout
+## Directory Layout
 
 ```
 .
@@ -99,14 +99,14 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 
 ---
 
-## 6. Architecture & Methodology
+## Architecture & Methodology
 
-### 6.1 Data Sources
+### Data Sources
 
 - Orbital periods & radii: NASA Planetary Fact Sheet
 - Textures: [Solar System Scope](https://www.solarsystemscope.com/textures/) *(CC‑BY‑4.0)*
 
-### 6.2 Core Components
+### Core Components
 
 | Module         | Responsibility                           | Key APIs                     |
 | -------------- | ---------------------------------------- | ---------------------------- |
@@ -118,7 +118,7 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 
 ---
 
-## 7. Known Limitations
+## Known Limitations
 
 - **Idealised orbits** – planets follow perfect circles in a single plane; eccentricity, inclination and axial tilt are ignored
 - **Not‑to‑scale sizing** – planetary diameters and inter‑planet distances are intentionally exaggerated/compressed to keep everything visible in one view
@@ -126,7 +126,7 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 - **Single light source** – simple Phong lighting without shadows, eclipses or atmospheric scattering
 - **Preset trajectories** – planets do not exert gravity on each other; they move along predefined paths
 
-## 8. Screenshots and Demo
+## Screenshots and Demo
 
 ### App Screenshot
 Here’s a screenshot of the app:
