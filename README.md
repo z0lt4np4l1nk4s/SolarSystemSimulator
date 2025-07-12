@@ -7,7 +7,7 @@ This is a **Solar System Simulator** app created using **OpenGL** as part of my 
 ## Table of Contents
 
 1. [Project Purpose](#project-purpose)
-2. [Quick Start](#quick-start)
+2. [Build instructions](#build-instructions)
 3. [Features](#features)
 4. [Controls](#controls)
 5. [Directory Layout](#directory-layout)
@@ -23,25 +23,92 @@ This project was created to demonstrate how a structured OpenGL application can 
 
 ---
 
-## Quick Start
+## Build instructions
+
+Windows
 
 1. Clone the repository
+
 ```bash
-git clone https://github.com/z0lt4np4l1nk4s/SolarSystemSimulator
+git clone https://github.com/z0lt4np4l1nk4s/SolarSystemSimulator && cd SolarSystemSimulator
 ```
 
-2. Run the compile command
+2. Build using one of the following options:
+
+**Option A: Using MSYS2 with mingw32-make**
+
+Install MSYS2 and required packages:
+
 ```bash
-cd SolarSystemSimulator
-.\compile.bat
+pacman -Syu
+pacman -S mingw-w64-x86_64-toolchain mingw-w64-x86_64-glfw make
+```
+
+_Make sure you added mingw32-make to PATH_
+
+Build with:
+
+```bash
+mingw32-make
+```
+
+**Option B: Using GnuWin32 with make**
+
+Download and install make from [GnuWin32](https://gnuwin32.sourceforge.net/packages/make.htm)
+
+Then build with:
+
+```bash
+make
 ```
 
 3. Run the simulation
+
 ```bash
-.\out.exe
+./SolarSystemSimulator.exe
 ```
 
-*Requires a C++17 compiler*
+_Requires a C++17 compiler_
+
+Linux:
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/z0lt4np4l1nk4s/SolarSystemSimulator && cd SolarSystemSimulator
+```
+
+2. Install the dependencies
+
+Install make if not already
+
+```bash
+sudo apt install make
+```
+
+Install the project dependencies
+
+```bash
+make install-deps
+```
+
+Or install manually:
+
+```bash
+sudo apt install make build-essential pkg-config libglfw3-dev libglm-dev libgles-dev mesa-common-dev
+```
+
+3. Build using make
+
+```bash
+make
+```
+
+3. Run the simulation
+
+```bash
+./SolarSystemSimulator
+```
 
 ---
 
@@ -73,7 +140,7 @@ cd SolarSystemSimulator
   - **8**: Focus on Uranus
   - **9**: Focus on Neptune
 
-*(The help overlay is rendered with a custom bitmap‑font text engine implemented in **`src/text_renderer.cpp`**.)*
+_(The help overlay is rendered with a custom bitmap‑font text engine implemented in **`src/text_renderer.cpp`**.)_
 
 ---
 
@@ -95,7 +162,7 @@ cd SolarSystemSimulator
 ├─ main.cpp           # Entry point of the application (initialises window, engine, loop)
 ```
 
-Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all bundled under permissive licenses so the project builds out‑of‑the‑box without system‑wide installs.
+Key third‑party libraries are **GLFW, GLAD, GLM** and **stb_image** — all bundled under permissive licenses so the project builds out‑of‑the‑box without system‑wide installs.
 
 ---
 
@@ -104,17 +171,17 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 ### Data Sources
 
 - Orbital periods & radii: NASA Planetary Fact Sheet
-- Textures: [Solar System Scope](https://www.solarsystemscope.com/textures/) *(CC‑BY‑4.0)*
+- Textures: [Solar System Scope](https://www.solarsystemscope.com/textures/) _(CC‑BY‑4.0)_
 
 ### Core Components
 
-| Module         | Responsibility                           | Key APIs                     |
-| -------------- | ---------------------------------------- | ---------------------------- |
-| `Simulation`   | Julian‑day clock, circular‑orbit math    | `<chrono>`, GLM              |
-| `Renderer`     | VBO/VAO setup, shader management, skybox | OpenGL 3.3, GLAD             |
-| `Input`        | GLFW callbacks → app commands            | GLFW                         |
-| `TextRenderer` | Bitmap‑font rendering (HUD & help)       | FreeType (via stb\_truetype) |
-| `Assets`       | Texture & shader loading                 | stb\_image, `<filesystem>`   |
+| Module         | Responsibility                           | Key APIs                    |
+| -------------- | ---------------------------------------- | --------------------------- |
+| `Simulation`   | Julian‑day clock, circular‑orbit math    | `<chrono>`, GLM             |
+| `Renderer`     | VBO/VAO setup, shader management, skybox | OpenGL 3.3, GLAD            |
+| `Input`        | GLFW callbacks → app commands            | GLFW                        |
+| `TextRenderer` | Bitmap‑font rendering (HUD & help)       | FreeType (via stb_truetype) |
+| `Assets`       | Texture & shader loading                 | stb_image, `<filesystem>`   |
 
 ---
 
@@ -122,18 +189,20 @@ Key third‑party libraries are **GLFW, GLAD, GLM** and **stb\_image** — all b
 
 - **Idealised orbits** – planets follow perfect circles in a single plane; eccentricity, inclination and axial tilt are ignored
 - **Not‑to‑scale sizing** – planetary diameters and inter‑planet distances are intentionally exaggerated/compressed to keep everything visible in one view
-- **Only one moon** – currently *only Earth’s Moon* is rendered; no other natural satellites, dwarf planets or asteroid belt
+- **Only one moon** – currently _only Earth’s Moon_ is rendered; no other natural satellites, dwarf planets or asteroid belt
 - **Single light source** – simple Phong lighting without shadows, eclipses or atmospheric scattering
 - **Preset trajectories** – planets do not exert gravity on each other; they move along predefined paths
 
 ## Screenshots and Demo
 
 ### App Screenshot
+
 Here’s a screenshot of the app:
 
 ![Simulator Image](screenshots/screenshot.png)
 
 ### Demo GIF
+
 Check out a short demo showing the app in action:
 
 ![Simulator Animation](screenshots/simulation.gif)
