@@ -1,0 +1,46 @@
+# Makefile.windows – radi sa mingw32-make iz CMD-a
+
+TARGET   := SolarSystemSimulator.exe
+OBJDIR   := build
+CXX      := g++
+CC       := gcc
+CPPFLAGS := -Iinclude
+CXXFLAGS := -std=c++17 -O2 -Wall -Wextra $(CPPFLAGS)
+CFLAGS   := -std=c11   -O2 -Wall -Wextra $(CPPFLAGS)
+
+# --- sources ------------------------------------------------------
+CPP_SRCS := $(wildcard main.cpp src/*.cpp src/models/*.cpp)
+C_SRCS   := src/glad.c
+OBJS     := $(addprefix $(OBJDIR)/,$(CPP_SRCS:.cpp=.o) $(C_SRCS:.c=.o))
+
+# --- linker libs --------------------------------------------------
+LIBDIRS := -Llib
+LIBS    := -lglfw3 -lopengl32 -lgdi32 -luser32 -lkernel32
+
+# --- phony targets ------------------------------------------------
+.PHONY: all run clean
+
+# --- build target -------------------------------------------------
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(LIBDIRS) $^ $(LIBS) -o $@
+
+# --- cpp compile rule ---------------------------------------------
+$(OBJDIR)/%.o: %.cpp
+	@if not exist "$(subst /,\,$(dir $@))" mkdir "$(subst /,\,$(dir $@))"
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# --- c compile rule -----------------------------------------------
+$(OBJDIR)/%.o: %.c
+	@if not exist "$(subst /,\,$(dir $@))" mkdir "$(subst /,\,$(dir $@))"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# --- run target ---------------------------------------------------
+run: $(TARGET)
+	$(TARGET)
+
+# --- clean target -------------------------------------------------
+clean:
+	@if exist $(OBJDIR) rmdir /S /Q $(OBJDIR)
+	@if exist $(TARGET) del $(TARGET)

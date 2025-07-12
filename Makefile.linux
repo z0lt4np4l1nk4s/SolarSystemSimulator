@@ -1,0 +1,41 @@
+# ---  Makefile.linux  ------------------------------------------------
+TARGET      := SolarSystemSimulator
+CXX         ?= g++
+CC          ?= gcc
+OBJDIR      := build
+CPPFLAGS    := -Iinclude
+CXXFLAGS    := -std=c++17 -O2 -Wall -Wextra $(CPPFLAGS)
+CFLAGS      := -std=c11   -O2 -Wall -Wextra $(CPPFLAGS)
+
+# source files
+CPP_SRCS := $(shell find src -name '*.cpp') main.cpp
+C_SRCS   := src/glad.c
+OBJS     := $(addprefix $(OBJDIR)/,$(CPP_SRCS:.cpp=.o) $(C_SRCS:.c=.o))
+
+# libs
+LIBS     := $(shell pkg-config --libs glfw3 2>/dev/null || echo "-lglfw") -ldl -lGL -pthread
+
+# rules
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ $(LIBS) -o $@
+
+$(OBJDIR)/%.o: %.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS)   -c $< -o $@
+
+run: all
+	./$(TARGET)
+
+clean:
+	rm -rf $(OBJDIR) $(TARGET)
+
+install-deps:
+	sudo apt update && \
+	sudo apt install -y build-essential pkg-config libglfw3-dev libglm-dev \
+	                    libgles-dev mesa-common-dev
