@@ -104,7 +104,7 @@ sudo apt install make build-essential pkg-config libglfw3-dev libglm-dev libgles
 make
 ```
 
-3. Run the simulation
+4. Run the simulation
 
 ```bash
 ./SolarSystemSimulator
